@@ -60,7 +60,155 @@ switch(currentDay){
         break;
 
 
-}*/
+}
+//loop 
 for(var i = 0; i <=100 ; i+=2){
     console.log(i)
 }
+
+//Arrays
+var myArr = [1 ,2 , "Alya", true];
+var myNewArr = [...myArr];
+
+for(var i=0; i< myArr.length; i++){
+    console.log(myArr[i]);
+}
+
+var StudentArr = ["Alya", "Sara", "Mary"];
+var reversedArr = [];
+
+var x = 0;
+
+for(var i=StudentArr.length-1; i>=0; i--){
+   reversedArr.push(StudentArr[i]);
+}
+
+console.log(StudentArr.includes("Alya"))
+
+var newArr = StudentArr.map(firstname => "Miss" + firstname)
+console.log(newArr)
+
+
+function hello(alertMsg){
+    alert(alertMsg);
+
+    return "OK";
+}
+var msg = "Hello everyone";
+var res = hello(msg);
+
+console.log(res)
+
+
+var arr = ["Credit card data"];
+
+
+
+
+function myArr(sourceArray){
+    var arr = [];
+    for(var i=0; i<sourceArray.length; i++){
+        var element = sourceArray[i];
+        if(typeof(sourceArray[i]) == "string"){
+            arr[i] = element.toUpperCase();
+        }
+        else if(typeof(sourceArray[i]) == "number"){
+            arr[i] = element * element;
+        
+        }
+        else{
+            arr[i]= null;
+           
+        }
+    }
+    return arr;
+}
+
+var sourceArray = [3,"Alya",false, undefined, "tot",6]
+var arr = myArr(sourceArray);
+
+console.log(arr)*/
+
+
+//Creating objects using class constructor
+
+//var courseInformation = new Object();
+//courseInformation["topic"] = "javascript";
+//courseInformation["duration"] = 5;
+//courseInformation["NumOfStudents"] = 25;
+//courseInformation["Students"] = ["Dan", "ALya"];
+
+/*var courseInformation = {
+    topic: "Javascript",
+    duration: 5,
+    numOfStudents: 25
+}
+
+for(var key in courseInformation){
+    var val = courseInformation[key]  ;
+    console.log(key, val)
+
+
+}*/
+
+
+
+
+/*console.log(courseInformation);
+
+function hello(){
+
+}
+
+var hello = function(){
+    console.log("Hello world!")
+}
+
+courseInformation["hello"] = hello;
+//courseInformation["hello"]();
+courseInformation.hello();
+
+
+
+
+//object of place 
+var PlaceInfo = new Object();
+PlaceInfo["place"] = "edge";
+
+console.log(PlaceInfo);
+
+PlaceInfo["place"]="Abu Dhabi"
+console.log(PlaceInfo)*/
+
+
+
+//var arr = [1,2,"fff",4,5];
+// for .. in .. -> iterate the indexes one by one
+// for .. of .. -> iterate the values one by one
+//for(var i of arr){
+    //console.log(i);
+
+//}
+
+
+//create a function that get as argument an array of object
+//create new array so they new array will be contain strings values that represent
+//all the keys axist in the iteration element
+
+function myArr(sourceArray){
+    //var outputArr = [];
+    //iterating the array where each iteration is an object
+    for(var obj of sourceArray){
+       // var keystr = "";
+        for(var a in obj) {
+            //keystr += " " + a;
+            obj[a] = null;
+        }
+    
+        //outputArr.push(keystr);
+
+    }
+    return sourceArray;
+}
+var arr = [{name:"something",age:5},{time:"something", size:33}];
+console.log(myArr(arr));
