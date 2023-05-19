@@ -496,20 +496,66 @@ console.log("Step 2")*/
 
 //--------------------------------------------
 
-function PersonArray(){
-    var arr = [];
-    var UsersCreate = prompt("please enter how many persons you want to create: ")
+function getPositiveNumber(message){
+    
+    var UsersCreate = prompt(message)
     var number = parseInt(UsersCreate)
 
-    if(number < 1){
-        throw new RangeError("Number should be larger than zero")
+    if(isNaN(number)){
+        throw new TypeError("please insert only numbers")
+    }
+    if(number < 0){
+        throw new RangeError("Number must be positive")
     }
 
+    return number;
+
 }
-for(var i=0; i<1000000; i++){
+
+
+function CreatePerson(numtToCreate){
+    var arr = [];
+    for(var i=0; i<numtToCreate; i++){
+        var firstName = prompt("Enter first name of person" + i.toString());
+        if(firstName.length > 25){
+            throw new RangeError("First name can be up to 25 characters");
+        }
+        var LastName = prompt("Enter last name of person" + i.toString());
+        if(firstName.length > 50){
+            throw new RangeError("last name can be up to 25 characters");
+        }
+        var age = getPositiveNumber("Enter age of person" + i.toString())
+        if(age < 21){
+            throw new RangeError("Person should be above 25 years old")
+        }
+
+        //pushing new person into the array
+        personalbar.push({
+            firstName, 
+            LastName,
+            age
+        });
+
+    }
+    return arr;
     
 }
 
-function CreatePerson(){
-    return prompt("Please enter the firstName")
+function main(){
+    try{
+        var numberOfPersonToCreate = getPositiveNumber("How much person would you like to create")
+        CreatePerson(numberOfPersonToCreate);
+        console.log(arr);
+
+        intervalID = setInterval(function(){
+            var personToPrint = arr.shift();
+            console.log(personToPrint);
+            if(!arr.length){
+                clearInterval(intervalID);
+            }
+        },2000)
+    }catch(error){
+        console.log(error.message)
+    }
 }
+main();
